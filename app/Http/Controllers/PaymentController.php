@@ -63,6 +63,23 @@ class PaymentController extends Controller
             return response()->json(['error' => 'Transaksi Batal'], 500);
         }
     }
+
+    public function showCustomer($id)
+{
+    // Cek apakah pelanggan ada
+    $customer = Customer::find($id);
+
+    if (!$customer) {
+        return response()->json(['error' => 'Pelanggan Tidak Ditemukan'], 404);
+    }
+
+    // Tampilkan data pelanggan
+    return response()->json([
+        'id' => $customer->id,
+        'balance' => $customer->balance,
+    ], 200);
+}
+
     
     
 }

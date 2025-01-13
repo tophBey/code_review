@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::post('/payment/{customerId}', [PaymentController::class, 'processPayment']);
+Route::post('/payment/{id}', [PaymentController::class, 'processPayment']);
+Route::get('/payment/{id}', [PaymentController::class, 'showCustomer']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
